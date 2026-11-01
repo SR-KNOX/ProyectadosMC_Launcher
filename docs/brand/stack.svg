@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="86" viewBox="0 0 1000 86" role="img" aria-labelledby="t d">
+  <title id="t">Composición del proyecto</title>
+  <desc id="d">JavaScript 81%, CSS 13%, HTML 5%, JSON 1%</desc>
+  <defs>
+    <clipPath id="bar">
+      <rect x="0" y="0" width="1000" height="20" rx="10" ry="10"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#bar)">
+    <rect x="0" y="0" width="810" height="20" fill="#f1e05a"/>
+    <rect x="810" y="0" width="129" height="20" fill="#a97bff"/>
+    <rect x="939" y="0" width="54" height="20" fill="#e34c26"/>
+    <rect x="993" y="0" width="7" height="20" fill="#8b949e"/>
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" fill="#7d8590">
+    <circle cx="8" cy="52" r="6" fill="#f1e05a"/>
+    <text x="22" y="58">JavaScript <tspan font-weight="600" fill="#57606a">81%</tspan></text>
+    <circle cx="306" cy="52" r="6" fill="#a97bff"/>
+    <text x="320" y="58">CSS <tspan font-weight="600" fill="#57606a">13%</tspan></text>
+    <circle cx="560" cy="52" r="6" fill="#e34c26"/>
+    <text x="574" y="58">HTML <tspan font-weight="600" fill="#57606a">5%</tspan></text>
+    <circle cx="776" cy="52" r="6" fill="#8b949e"/>
+    <text x="790" y="58">JSON <tspan font-weight="600" fill="#57606a">1%</tspan></text>
+  </g>
+</svg>
