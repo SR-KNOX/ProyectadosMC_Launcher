@@ -32,8 +32,7 @@
 
 **PMC Launcher (PMCL)** es el launcher oficial de **Proyectados MC**, el servidor de KN STUDIOS. Descargas un .exe, escribes tu nick y el launcher se encarga de todo lo demás: instala Forge, prepara la instancia, baja los mods y abre el juego.
 
-> **IMPORTANTE**
->
+>[!IMPORTANT]
 > Proyectados MC es un servidor **híbrido**: cualquiera puede entrar a nuestro Discord y asomarse a la comunidad, pero el modpack y este launcher se desarrollaron únicamente para jugar aquí. No es un launcher genérico, no sirve para otros modpacks ni otros servidores, y no pretendemos que lo haga.
 
 <img src="docs/brand/flujo.svg" alt="Descargas el .exe, eliges carpeta y nick, se instalan Forge y los mods, pulsas Jugar" width="100%">
