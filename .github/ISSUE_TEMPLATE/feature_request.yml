@@ -1,0 +1,26 @@
+name: ✨ Solicitud de función
+description: Propón una nueva funcionalidad o mejora.
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: ¿Qué problema resuelve?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solución propuesta
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas consideradas
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmaciones
+      options:
+        - label: He buscado issues similares y no existe uno igual.
+          required: true

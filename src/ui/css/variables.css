@@ -1,0 +1,38 @@
+/* Tokens de diseño: colores, fuentes y medidas clave. Cambia el aspecto del launcher desde aquí.
+   Paleta: noche obsidiana (oscuros cálidos) con acentos dorados neón. */
+/* Tipografía local (sin conexiones externas): Nunito 500 y 700 según disponibilidad de archivo */
+@font-face{font-family:'Nunito';font-style:normal;font-weight:500;font-display:swap;src:url('../assets/fonts/Nunito-500.ttf') format('truetype')}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:700;font-display:swap;src:url('../assets/fonts/Nunito-700.ttf') format('truetype')}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:800;font-display:swap;src:url('../assets/fonts/Nunito-700.ttf') format('truetype')}
+
+:root{
+  --night:#07060a;
+  --glass:rgba(12,10,6,.72); --edge:rgba(245,197,66,.26);
+  --text:#f7ecd2; --muted:#b9a87a;
+
+  /* Acento principal (botones, foco, barras) */
+  --accent:#f5c542; --accent-d:#a87a12; --accent-glow:rgba(245,197,66,.34);
+  /* Aviso de actualización: ámbar dorado, brillo neón */
+  --xp:#ffd37a;
+
+  /* Superficies del nuevo diseño (barra lateral, tarjetas, banner) */
+  --surface:rgba(14,11,6,.78); --surface-2:rgba(245,197,66,.06);
+  --line:rgba(245,197,66,.16);
+  --ok:#4ade80; --warn:#ffd37a; --danger:#ff8f8f;
+  --radius:12px;
+
+  /* Medidas del diseño.
+     --side : ancho de la barra lateral (escritorio).
+     --gap  : separación entre tarjetas y margen del contenido. */
+  --side:16rem;
+  --gap:clamp(.75rem,1.6vw,1.25rem);
+  --pad:var(--gap);
+
+  /* Zonas seguras (muescas / barras del sistema en móviles) */
+  --safe-t:env(safe-area-inset-top,0px);
+  --safe-r:env(safe-area-inset-right,0px);
+  --safe-b:env(safe-area-inset-bottom,0px);
+  --safe-l:env(safe-area-inset-left,0px);
+
+  --font-body:'Nunito',system-ui,'Segoe UI',Roboto,sans-serif; --font-title:var(--font-body);   /* una sola tipografía en todo el launcher */
+}

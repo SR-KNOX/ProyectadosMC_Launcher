@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#040a14">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://cdn.modrinth.com; media-src 'self' blob:; connect-src 'self' https://api.modrinth.com https://api.mcsrvstat.us https://cdn.jsdelivr.net https://raw.githubusercontent.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
+<title>PROYECTADOS</title>
+<link rel="icon" href="assets/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/screens.css">
+</head>
+<body>
+<div id="splash" class="splash" aria-label="Cargando">
+  <div class="splash-inner">
+    <img class="splash-logo" src="assets/logo-proyectados.png" alt="PROYECTADOS" width="1000" height="878">
+    <div class="splash-brand">PROYECTADOS MC</div>
+    <div class="splash-sub">Preparando el launcher…</div>
+    <div class="splash-bar" aria-hidden="true"><span></span></div>
+  </div>
+</div>
+<canvas id="bg" aria-hidden="true"></canvas>
+<!-- Fondo principal: video en bucle. Si no carga o el equipo ahorra datos/movimiento, se usa el canvas de arriba (fallback). -->
+<video id="bgv" aria-hidden="true" muted loop playsinline preload="auto" poster="assets/video/bosque-poster.jpg" disablepictureinpicture>
+  <source src="assets/video/bosque-bucle.webm" type="video/webm">
+  <source src="assets/video/bosque-bucle.mp4" type="video/mp4">
+</video>
+<div id="shade"></div>
+
+<!-- Iconos (se usan con <use href="#i-...">) -->
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-discord" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-log" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="1.8"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.8"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.8"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.8"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/></symbol>
+<symbol id="i-swap" viewBox="0 0 24 24"><path d="M7 4L3 8l4 4"/><path d="M3 8h13"/><path d="M17 12l4 4-4 4"/><path d="M21 16H8"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M9.5 7V4h5v3"/><path d="M6.5 7l1.4 13a2 2 0 0 0 2 1.9h4.2a2 2 0 0 0 2-1.9l1.4-13"/></symbol>
+</svg>
+
+<div class="app">
+
+  <!-- Barra lateral: marca, navegación, estudio y jugador -->
+  <aside class="side">
+    <div class="brand">
+      <img class="brand-mark" src="assets/favicon-64.png" alt="" width="64" height="64">
+      <div class="brand-text"><b>PROYECTADOS</b><span>Launcher · <span id="appVer">v1.0.0</span></span></div>
+    </div>
+
+    <nav class="nav" aria-label="Menú principal">
+      <button class="nav-item" id="navHome" type="button"><svg class="ico"><use href="#i-home"/></svg><span>Inicio</span></button>
+      <button class="nav-item" id="navLogs" type="button"><svg class="ico"><use href="#i-log"/></svg><span>Logs</span><span class="nav-dot" id="logsDot" hidden aria-hidden="true"></span></button>
+      <button class="nav-item" id="navContent" type="button"><svg class="ico"><use href="#i-grid"/></svg><span>Contenido</span></button>
+      <button class="nav-item" id="navStore" type="button" title="Abrir la tienda"><svg class="ico"><use href="#i-store"/></svg><span>Tienda</span><svg class="ico ext"><use href="#i-ext"/></svg></button>
+      <button class="nav-item" id="navDiscord" type="button" title="Unirse al servidor de Discord"><svg class="ico fill"><use href="#i-discord"/></svg><span>Discord</span><svg class="ico ext"><use href="#i-ext"/></svg></button>
+      <button class="nav-item nav-bottom" id="navAbout" type="button"><svg class="ico"><use href="#i-info"/></svg><span>Sobre nosotros</span></button>
+      <button class="nav-item" id="btnOptions" type="button"><svg class="ico"><use href="#i-gear"/></svg><span>Opciones</span></button>
+    </nav>
+
+
+    <div class="player" id="player">
+      <div class="avatar" id="avatar"><canvas id="avatarSkin" width="8" height="8" aria-hidden="true"></canvas><span id="avatarLetter">S</span></div>
+      <div class="player-text"><b id="hName">Steve</b><span>Listo para jugar</span></div>
+    </div>
+  </aside>
+
+  <div class="content">
+    <div class="titlebar">
+      <span class="titlebar-title">PROYECTADOS</span>
+      <div class="titlebar-controls">
+        <button type="button" id="btnMin" aria-label="Minimizar">—</button>
+        <button type="button" id="btnMax" aria-label="Maximizar">□</button>
+        <button type="button" id="btnClose" aria-label="Cerrar">×</button>
+      </div>
+    </div>
+    <!-- Logo grande, solo en la bienvenida y la instalación -->
+    <img class="onb-logo" src="assets/logo-proyectados.png" alt="PROYECTADOS" width="1000" height="878">
+
+    <main>
+      <!-- Pantalla 2: carpeta de instalación -->
+      <section class="panel screen install-panel" id="s-folder">
+        <div class="install-hero compact">
+          <div class="install-hero-top">
+            <span class="install-kicker" id="installKicker">Configuración inicial</span>
+            <h1 id="installTitle">Instalar instancia</h1>
+          </div>
+          <p class="sub" id="installSub">Define tu nombre, la carpeta y la RAM. Todo se instalará y verificará automáticamente.</p>
+        </div>
+
+        <div class="install-grid compact">
+          <div class="install-section compact">
+            <label for="nick">Nombre de jugador</label>
+            <input id="nick" maxlength="16" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Steve123">
+            <div class="hint" id="nickHint" role="alert"></div>
+          </div>
+
+          <div class="install-section compact">
+            <label for="folder">Carpeta de instancia</label>
+            <div class="row folder-row"><input id="folder" readonly placeholder="Selecciona una carpeta…"><button class="ghost" id="btnPick">Elegir</button></div>
+            <div class="hint" id="folderHint"></div>
+          </div>
+
+          <div class="install-section compact install-section-wide">
+            <div class="ram compact" id="instRam">
+              <div class="ram-head"><label for="instRamRange">Memoria RAM</label><output class="ram-val" id="instRamVal" for="instRamRange">4 GB</output></div>
+              <input type="range" class="ram-range" id="instRamRange" aria-describedby="instRamHint">
+              <div class="ram-scale"><span id="instRamMin">2 GB</span><span class="ram-rec" id="instRamRec"></span><span id="instRamMax">8 GB</span></div>
+              <div class="hint ram-hint" id="instRamHint"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="install-actions">
+          <button class="ghost" id="btnInstallCancel" type="button" hidden>Cancelar</button>
+          <button class="big" id="btnInstall">Instalar</button>
+        </div>
+        <div class="install-progress" id="installProgress" aria-live="polite">
+          <div class="install-progress-head">
+            <span class="install-progress-title" id="installProgressTitle">Instalación en curso</span>
+            <span class="install-progress-pct" id="installProgressPct">0%</span>
+          </div>
+          <div class="bar" id="bar"><i id="barFill"></i></div>
+          <div class="status" id="status"></div>
+        </div>
+      </section>
+
+      <!-- Pantalla 3: inicio (datos, modpack y botón de jugar) -->
+      <section class="screen home" id="s-home">
+        <div class="stats">
+          <div class="stat"><span class="stat-ico c1"><svg class="ico"><use href="#i-cpu"/></svg></span><div><small>Minecraft</small><b id="mcV">1.20.1</b></div></div>
+          <div class="stat"><span class="stat-ico c2"><svg class="ico"><use href="#i-layers"/></svg></span><div><small>Forge</small><b>Instalado</b></div></div>
+          <div class="stat"><span class="stat-ico c3"><svg class="ico"><use href="#i-box"/></svg></span><div><small>Modpack</small><b id="packV">v0.1.3</b></div></div>
+          <div class="stat srv" id="srvCard" data-status="checking"><span class="stat-ico"><svg class="ico"><use href="#i-server"/></svg></span><div><small>Servidor</small><b><span class="dot" aria-hidden="true"></span><span id="srvState" role="status" aria-live="polite">Comprobando…</span><span class="srv-players" id="srvPlayers"></span></b></div></div>
+        </div>
+
+        <!-- Banner de noticias: rota solo (modpack → novedades → vuelve al modpack). El botón de jugar queda fijo abajo. -->
+        <div class="hero" id="hero" role="region" aria-roledescription="carrusel" aria-label="Noticias">
+          <div class="slides" id="slides">
+            <article class="slide on" aria-label="Modpack">
+              <div class="badges"><span class="badge">Modpack</span><span class="badge ver" id="heroVer">v0.1.3</span></div>
+              <img class="hero-logo" src="assets/logo-proyectados.png" alt="PROYECTADOS" width="1000" height="878">
+              <p class="hero-text" id="heroText"></p>
+            </article>
+          </div>
+          <button class="hero-arrow prev" id="newsPrev" type="button" aria-label="Noticia anterior"><svg class="ico"><use href="#i-chev"/></svg></button>
+          <button class="hero-arrow next" id="newsNext" type="button" aria-label="Noticia siguiente"><svg class="ico"><use href="#i-chev"/></svg></button>
+          <div class="hero-foot">
+            <div class="hero-dots" id="newsDots" role="group" aria-label="Elegir noticia"></div>
+            <div class="hero-play">
+              <div class="play-status">
+                <div class="status" id="status2"></div>
+                <div class="bar" id="bar2"><i id="barFill2"></i></div>
+              </div>
+              <button class="play" id="btnMain" type="button"><svg class="ico"><use href="#i-play"/></svg><span id="btnMainLabel">Jugar</span></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pantalla: logs (historial de cambios por actualización) -->
+      <section class="screen page logs" id="s-logs">
+        <header class="page-head">
+          <span class="page-ico"><svg class="ico"><use href="#i-log"/></svg></span>
+          <div><h1>Logs</h1><p class="sub">Qué cambió en cada actualización del modpack. Lo más reciente va primero.</p></div>
+        </header>
+        <div class="log-key" aria-label="Tipos de cambio">
+          <span class="log-key-item k-new"><svg class="ico"><use href="#i-spark"/></svg>Nuevo</span>
+          <span class="log-key-item k-change"><svg class="ico"><use href="#i-swap"/></svg>Cambio</span>
+          <span class="log-key-item k-fix"><svg class="ico"><use href="#i-check"/></svg>Corregido</span>
+          <span class="log-key-item k-remove"><svg class="ico"><use href="#i-trash"/></svg>Eliminado</span>
+        </div>
+        <div class="log-list" id="logList"></div>
+      </section>
+
+      <!-- Pantalla: contenido (mods del modpack) -->
+      <section class="screen page content" id="s-content">
+        <header class="page-head">
+          <span class="page-ico"><svg class="ico"><use href="#i-grid"/></svg></span>
+          <div><h1>Contenido</h1><p class="sub">Los mods que incluye PROYECTADOS. Busca por nombre o filtra por categoría.</p></div>
+        </header>
+        <div class="toolbar">
+          <label class="search" for="modSearch"><svg class="ico"><use href="#i-search"/></svg><input id="modSearch" type="search" placeholder="Buscar mod…" autocomplete="off" spellcheck="false"></label>
+          <div class="chips" id="modChips" role="group" aria-label="Filtrar por categoría"></div>
+          <span class="count" id="modCount" role="status" aria-live="polite"></span>
+        </div>
+        <div class="mods" id="modList"></div>
+        <p class="empty" id="modEmpty" hidden>Ningún mod coincide con tu búsqueda.</p>
+      </section>
+
+      <!-- Pantalla 4: opciones -->
+      <section class="screen page settings" id="s-options">
+        <header class="page-head">
+          <span class="page-ico"><svg class="ico"><use href="#i-gear"/></svg></span>
+          <div><h1>Opciones</h1><p class="sub">Ajusta tu nombre, tu skin, tu capa y la instalación del modpack. Los cambios se aplican al pulsar «Guardar».</p></div>
+        </header>
+
+        <div class="cards">
+          <article class="card c-profile">
+            <h2>Jugador</h2>
+            <p class="card-lead">Tu nombre de jugador: es con el que apareces en el juego.</p>
+            <label for="optNick">Nombre de jugador</label>
+            <input id="optNick" readonly>
+            <button class="link-btn" id="btnNickEdit" type="button" aria-expanded="false" aria-controls="nickForm">Cambiar nombre</button>
+            <div class="notice" id="nickLocked" hidden>
+              <p>Ya entraste al servidor con este nombre, así que no se puede cambiar desde aquí. Si necesitas cambiarlo, abre un ticket en nuestro Discord.</p>
+              <button class="ghost" id="btnNickTicket" type="button"><svg class="ico fill" aria-hidden="true"><use href="#i-discord"/></svg>Abrir Discord</button>
+            </div>
+            <form class="nick-form" id="nickForm" hidden novalidate>
+              <p class="notice warn"><b>Antes de continuar:</b> este cambio es solo por si te equivocaste al elegir tu nombre. Cuando entres al servidor por primera vez con él, ya no podrás cambiarlo desde el launcher: tendrás que pedirlo con un ticket en nuestro Discord.</p>
+              <label for="nickNew">Nombre nuevo</label>
+              <input id="nickNew" maxlength="16" autocomplete="off" autocapitalize="off" spellcheck="false">
+              <div class="hint" id="nickChangeHint" role="alert"></div>
+              <div class="nick-actions">
+                <button class="ghost" id="btnNickCancel" type="button">Cancelar</button>
+                <button class="big" id="btnNickSave" type="submit">Cambiar nombre</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="card c-skin">
+            <h2>Skin y capa</h2>
+            <p class="card-lead">Tu apariencia en tu perfil: la skin de tu personaje y, si tienes una, tu capa.</p>
+            <div class="skin-box">
+              <canvas id="skinPreview" class="skin-preview" width="16" height="32" aria-label="Vista previa de tu skin"></canvas>
+              <div class="skin-side">
+                <p class="skin-help">Sube una imagen PNG de tu skin (64×64 o 64×32 px). Es la que se muestra en tu perfil del launcher. En el juego llegará pronto.</p>
+                <div class="skin-model" role="radiogroup" aria-label="Modelo de brazos">
+                  <label><input type="radio" name="skinModel" value="classic" checked><span>Clásico (Steve)</span></label>
+                  <label><input type="radio" name="skinModel" value="slim"><span>Delgado (Alex)</span></label>
+                </div>
+                <div class="skin-actions">
+                  <button class="ghost" id="btnSkinPick" type="button">Subir skin</button>
+                  <button class="ghost" id="btnSkinClear" type="button">Quitar</button>
+                </div>
+                <input id="skinFile" type="file" accept="image/png" hidden>
+              </div>
+            </div>
+            <div class="hint" id="skinHint"></div>
+
+            <div class="skin-box cape-box">
+              <canvas id="capePreview" class="cape-preview" width="10" height="16" aria-label="Vista previa de tu capa"></canvas>
+              <div class="skin-side">
+                <p class="skin-help"><b>Capa.</b> Sube una imagen PNG de tu capa (64×32 px; también sirven 22×17 y las versiones HD como 128×64). Se muestra en tu perfil del launcher.</p>
+                <div class="skin-actions">
+                  <button class="ghost" id="btnCapePick" type="button">Subir capa</button>
+                  <button class="ghost" id="btnCapeClear" type="button">Quitar</button>
+                </div>
+                <input id="capeFile" type="file" accept="image/png" hidden>
+              </div>
+            </div>
+            <div class="hint" id="capeHint" role="status"></div>
+          </article>
+
+          <article class="card c-install">
+            <h2>Instalación</h2>
+            <p class="card-lead">Dónde está el modpack y cuánta memoria usa Minecraft.</p>
+            <label for="optFolder">Carpeta de instalación</label>
+            <input id="optFolder" readonly>
+            <div class="skin-actions" style="margin:.55rem 0 .8rem">
+              <button class="ghost" id="btnOptReinstall" type="button">Reinstalar instancia…</button>
+            </div>
+            <div class="hint">La reinstalación volverá a pedir la carpeta y verificará/instalará los archivos necesarios.</div>
+            <div class="ram" id="optRam">
+              <div class="ram-head"><label for="optRamRange">Memoria RAM para Minecraft</label><output class="ram-val" id="optRamVal" for="optRamRange">4 GB</output></div>
+              <input type="range" class="ram-range" id="optRamRange" aria-describedby="optRamHint">
+              <div class="ram-scale"><span id="optRamMin">2 GB</span><span class="ram-rec" id="optRamRec"></span><span id="optRamMax">8 GB</span></div>
+              <div class="hint ram-hint" id="optRamHint"></div>
+            </div>
+            <div class="perf" id="optPerf">
+              <div class="ram-head"><label for="optPerfAuto">Rendimiento del juego</label></div>
+              <div class="skin-model" role="radiogroup" aria-label="Rendimiento del juego">
+                <label><input type="radio" name="optPerf" value="auto" id="optPerfAuto" checked><span>Automático</span></label>
+                <label><input type="radio" name="optPerf" value="low" id="optPerfLow"><span>Más fluido</span></label>
+                <label><input type="radio" name="optPerf" value="medium" id="optPerfMedium"><span>Equilibrado</span></label>
+                <label><input type="radio" name="optPerf" value="high" id="optPerfHigh"><span>Máxima calidad</span></label>
+              </div>
+              <div class="hint" id="optPerfHint">Automático adapta la configuración a tu equipo.</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="actions">
+          <div class="hint" id="optHint" role="status"></div>
+          <button class="ghost" id="btnOptBack" type="button">Volver</button>
+          <button class="big" id="btnOptSave" type="button">Guardar</button>
+        </div>
+      </section>
+
+      <!-- Política de privacidad (contenido en js/screens/privacy.js) -->
+      <section class="screen page privacy" id="s-privacy">
+        <header class="page-head">
+          <span class="page-ico"><svg class="ico"><use href="#i-info"/></svg></span>
+          <div><h1>Política de privacidad</h1><p class="sub" id="privMeta"></p></div>
+        </header>
+        <article class="card legal-doc" id="privBody"></article>
+        <div class="actions"><button class="ghost" id="btnPrivBack" type="button">Volver</button></div>
+      </section>
+
+      <!-- Pantalla 5: sobre nosotros -->
+      <section class="screen page about" id="s-about">
+        <header class="page-head">
+          <span class="page-ico"><svg class="ico"><use href="#i-info"/></svg></span>
+          <div><h1>Sobre nosotros</h1><p class="sub">Quiénes hacemos PROYECTADOS, qué incluye el launcher y dónde encontrarnos.</p></div>
+        </header>
+
+        <div class="cards">
+          <article class="card c-studio">
+            <h2>El estudio</h2>
+            <p class="card-lead">RAYX</p>
+            <div class="about-logos">
+              <img src="assets/logo-studio.png" alt="Logo de RAYX" width="512" height="512">
+              <img src="assets/logo-emblem.png" alt="" width="512" height="512">
+            </div>
+            <div class="about-body" id="aboutStudio"></div>
+            <div class="contact">
+              <h3>Contacto</h3>
+              <p class="card-lead">¿Dudas, ideas o propuestas? Escríbenos directamente por Discord.</p>
+              <div class="about-links" id="contactBtns"></div>
+            </div>
+          </article>
+
+          <article class="card c-project">
+            <h2>El proyecto</h2>
+            <p class="card-lead">PROYECTADOS · modpack de Minecraft</p>
+            <img class="about-project" src="assets/logo-proyectados.png" alt="PROYECTADOS" width="1000" height="878">
+            <div class="about-body" id="aboutProject"></div>
+            <dl class="about-data">
+              <div><dt>Launcher</dt><dd id="aboutVer">v1.0.0</dd></div>
+              <div><dt>Minecraft</dt><dd id="aboutMc">1.20.1</dd></div>
+              <div><dt>Modpack</dt><dd id="aboutPack">v0.1.3</dd></div>
+            </dl>
+          </article>
+
+          <article class="card c-community">
+            <h2>Comunidad</h2>
+            <p class="card-lead">Únete, entérate de las novedades y apóyanos.</p>
+            <div class="about-links">
+              <button class="ghost" id="aboutDiscord" type="button"><svg class="ico fill"><use href="#i-discord"/></svg>Discord</button>
+              <button class="ghost" id="aboutStore" type="button"><svg class="ico"><use href="#i-store"/></svg>Tienda</button>
+            </div>
+          </article>
+
+          <article class="card c-legal">
+            <h2>Créditos y aviso legal</h2>
+            <p class="card-lead">Lo que debes saber sobre Minecraft y este proyecto.</p>
+            <p class="about-text">© RAYX. Minecraft es una marca registrada de Mojang AB. PROYECTADOS es un proyecto no oficial: no está aprobado ni asociado con Mojang ni con Microsoft.</p>
+            <p class="about-text">Tipografía: Nunito (licencia SIL OFL 1.1).</p>
+            <button class="ghost" id="aboutPrivacy" type="button"><svg class="ico"><use href="#i-info"/></svg>Política de privacidad</button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Pie: datos de instalación (solo en el inicio) a la izquierda · estudio a la derecha -->
+    <footer class="foot">
+  <div class="infobar">
+    <div><small>Instalado</small><b id="infoPack">v0.1.3</b></div>
+    <div><small>Estado</small><b id="infoState" class="ok">Actualizado</b></div>
+    <div><small>Memoria</small><b id="infoRam">4 GB</b></div>
+  </div>
+      <div class="studio">
+        <span class="studio-name">RAYX</span>
+        <img class="studio-logo" src="assets/logo-studio.png" alt="Logo de RAYX" width="512" height="512">
+        <img class="studio-emblem" src="assets/logo-emblem.png" alt="" width="512" height="512">
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<!-- Avisos flotantes: actualización del modpack y estado del servidor -->
+<div class="toasts">
+  <div class="toast" id="toast" role="status">
+    <button id="toastX" aria-label="Cerrar aviso">×</button>
+    <b>Nueva actualización disponible</b>
+    <span id="toastText">Hay una actualización del modpack. Pulsa Actualizar para instalarla.</span>
+  </div>
+  <div class="toast" id="toastSrv" role="status" data-tone="ok">
+    <button id="toastSrvX" aria-label="Cerrar aviso">×</button>
+    <b id="toastSrvTitle">Servidor</b>
+    <span id="toastSrvText"></span>
+  </div>
+</div>
+
+<!-- Los módulos ES requieren servidor local o Electron/Tauri (no funcionan con file://) -->
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

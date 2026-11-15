@@ -1,0 +1,128 @@
+/* Componentes reutilizables: panel, formularios, botones, barra de progreso, toast */
+
+/* Panel de cristal (bienvenida e instalación) y transición entre pantallas */
+.panel{width:min(27.5rem,100%);padding:clamp(1rem,3vw,1.5rem) clamp(.9rem,3vw,1.5rem);border-radius:16px;background:linear-gradient(180deg,rgba(18,14,8,.82),rgba(10,9,12,.78));
+  border:1px solid rgba(245,197,66,.22);backdrop-filter:blur(20px) saturate(1.35);-webkit-backdrop-filter:blur(20px) saturate(1.35);
+  box-shadow:0 34px 90px rgba(0,0,0,.58),0 0 0 1px rgba(255,255,255,.02) inset,inset 0 1px 0 rgba(255,255,255,.08)}
+.screen{display:none}
+.screen.on{display:block;animation:in .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes in{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+
+/* Formularios (16px mínimo en los campos: evita el zoom automático de iOS al enfocar) */
+label{display:block;font-size:.9rem;font-weight:700;margin-bottom:.5rem}
+.field-gap{margin-top:1.1rem}
+input{width:100%;padding:.85rem 1rem;border-radius:6px;border:1px solid var(--edge);background:rgba(3,10,20,.6);
+  color:var(--text);font:700 max(16px,1.05rem) var(--font-body);outline:none;transition:border-color .2s,box-shadow .2s}
+input:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+.hint{font-size:.82rem;color:var(--muted);margin-top:.5rem;min-height:1.2rem}
+.hint.err{color:#ff8a8a}
+.hint.ok{color:var(--accent)}
+.row{display:flex;gap:.6rem}
+.row input{flex:1;min-width:0;font-size:max(16px,.9rem)}
+
+/* Botones (objetivo táctil mínimo de ~44px) */
+button{cursor:pointer;font:700 .95rem var(--font-body);color:var(--text);-webkit-tap-highlight-color:transparent}
+button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.ghost{padding:0 1rem;min-height:2.75rem;border-radius:6px;border:1px solid var(--edge);background:rgba(255,255,255,.08)}
+@media (hover:hover){.ghost:hover{background:rgba(255,255,255,.16)}}
+.ghost:active{background:rgba(255,255,255,.2)}
+
+/* Botón principal de los paneles */
+.big{width:100%;margin-top:1.5rem;padding:1rem 1.25rem;border:0;border-radius:6px;font:700 1.25rem var(--font-title);letter-spacing:1px;
+  color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.4);background:var(--accent);
+  box-shadow:inset 0 -6px 0 var(--accent-d),inset 0 3px 0 rgba(255,255,255,.35),0 8px 24px var(--accent-glow);
+  transition:transform .08s,filter .2s}
+@media (hover:hover){.big:hover{filter:brightness(1.08)}}
+.big:active{transform:translateY(3px);box-shadow:inset 0 -3px 0 var(--accent-d),inset 0 3px 0 rgba(255,255,255,.35)}
+.big:disabled{filter:grayscale(.6) brightness(.8);cursor:progress}
+
+/* Barra de progreso y estado */
+.bar{height:.75rem;border-radius:3px;background:rgba(3,10,20,.65);margin-top:1.25rem;overflow:hidden;display:block;visibility:hidden;border:1px solid var(--edge)}
+.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--accent) 0 10px,#c9a227 10px 12px);transition:width .2s}
+.status{font-size:.82rem;color:var(--muted);margin-top:.5rem;min-height:1.2rem;text-align:center}
+
+/* Avisos (toasts): contenedor arriba a la derecha; actualización del modpack y estado del servidor */
+.toasts{position:fixed;z-index:5;top:calc(var(--safe-t) + 6.6rem);right:calc(var(--safe-r) + 1rem);
+  width:min(20.5rem,calc(100% - 2 * var(--pad)));display:flex;flex-direction:column;gap:.6rem;pointer-events:none}
+.toast{--tc:var(--xp);position:relative;display:none;pointer-events:auto;padding:1rem 1.1rem;border-radius:8px;
+  background:var(--glass);border:1px solid color-mix(in srgb,var(--tc) 50%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.toast.show{display:block;animation:toastIn .4s cubic-bezier(.2,.9,.2,1)}
+@keyframes toastIn{from{opacity:0;transform:translateX(40%)}}
+.toast[data-tone="ok"]{--tc:var(--ok)}
+.toast[data-tone="warn"]{--tc:var(--warn)}
+.toast[data-tone="err"]{--tc:var(--danger)}
+.toast b{display:block;font:700 .95rem var(--font-title);color:var(--tc);margin-bottom:.25rem;padding-right:1.5rem}
+.toast span{font-size:.88rem;color:var(--text);line-height:1.4}
+.toast button{position:absolute;top:.25rem;right:.4rem;width:2.25rem;height:2.25rem;background:none;border:0;font-size:1.25rem;color:var(--muted)}
+
+/* En móvil los avisos bajan desde arriba, bajo la barra superior (no tapan el botón de jugar) */
+@media (max-width:860px),(max-aspect-ratio:11/10){
+  .toasts{top:calc(var(--safe-t) + 3.7rem);left:calc(var(--safe-l) + 1rem);right:calc(var(--safe-r) + 1rem);width:auto;max-width:30rem;margin-left:auto}
+  .toast.show{animation-name:toastDown}
+  @keyframes toastDown{from{opacity:0;transform:translateY(-40%)}}
+}
+
+/* ---------- Skin (Opciones) ---------- */
+.skin-box{display:flex;gap:1rem;align-items:center;padding:.8rem;border-radius:6px;border:1px solid var(--edge);background:rgba(3,10,20,.45)}
+.skin-preview{flex:none;width:4.5rem;height:9rem;image-rendering:pixelated;background:rgba(255,255,255,.05);border-radius:4px}
+.skin-preview.empty{opacity:.4;background:repeating-conic-gradient(rgba(255,255,255,.08) 0 25%,transparent 0 50%) 0 0/1rem 1rem}
+.cape-box{margin-top:.9rem}
+.cape-preview{flex:none;width:4.5rem;height:7.2rem;image-rendering:pixelated;background:rgba(255,255,255,.05);border-radius:4px}
+.cape-preview.empty{opacity:.4;background:repeating-conic-gradient(rgba(255,255,255,.08) 0 25%,transparent 0 50%) 0 0/1rem 1rem}
+.skin-side{min-width:0;flex:1}
+.skin-help{font-size:.8rem;line-height:1.4;color:var(--muted);margin-bottom:.6rem}
+.skin-model{display:flex;flex-wrap:wrap;gap:.3rem 1rem;margin-bottom:.7rem}
+.skin-model label{display:flex;align-items:center;gap:.4rem;margin:0;font-size:.82rem;font-weight:600;cursor:pointer}
+.skin-model input{width:auto;padding:0;accent-color:var(--accent)}
+.skin-actions{display:flex;gap:.5rem;flex-wrap:wrap}
+.skin-actions .ghost{padding:0 .9rem;min-height:2.4rem;font-size:.85rem}
+.skin-actions .ghost:disabled{opacity:.45;cursor:not-allowed}
+
+/* ---------- Deslizador de RAM ---------- */
+.ram{margin-top:1.1rem}
+.ram-head{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;margin-bottom:.6rem}
+.ram-head label{margin:0}
+.ram-val{font:700 1.15rem var(--font-title);color:var(--accent);text-shadow:0 2px 0 rgba(0,0,0,.5);white-space:nowrap}
+.ram-range{-webkit-appearance:none;appearance:none;display:block;width:100%;height:2.25rem;padding:0;margin:0;border:0;background:none;cursor:pointer;--p:30%}
+.ram-range::-webkit-slider-runnable-track{height:.8rem;border-radius:3px;border:1px solid var(--edge);
+  background:linear-gradient(90deg,var(--accent) var(--p),rgba(3,10,20,.7) var(--p))}
+.ram-range::-moz-range-track{height:.8rem;border-radius:3px;border:1px solid var(--edge);background:rgba(3,10,20,.7)}
+.ram-range::-moz-range-progress{height:.8rem;border-radius:3px;background:var(--accent)}
+.ram-range::-webkit-slider-thumb{-webkit-appearance:none;width:1.1rem;height:1.9rem;margin-top:-.62rem;border-radius:3px;border:2px solid #fff;
+  background:var(--accent-d);box-shadow:0 3px 8px rgba(0,0,0,.5)}
+.ram-range::-moz-range-thumb{width:.9rem;height:1.7rem;border-radius:3px;border:2px solid #fff;background:var(--accent-d);box-shadow:0 3px 8px rgba(0,0,0,.5)}
+.ram-range:focus-visible{outline:none}
+.ram-range:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px var(--accent-glow)}
+.ram-range:focus-visible::-moz-range-thumb{box-shadow:0 0 0 4px var(--accent-glow)}
+.ram-scale{display:flex;justify-content:space-between;gap:.5rem;font-size:.74rem;color:var(--muted)}
+.ram-rec{color:var(--accent);text-align:center;flex:1}
+.ram-hint{min-height:1.2rem}
+.hint.warn{color:#ffd37a}
+.ram-range:disabled{opacity:.6;cursor:not-allowed}
+
+.ram-range.warn::-webkit-slider-thumb{background:var(--warn)!important}.ram-range.warn::-moz-range-thumb{background:var(--warn)!important}
+
+/* Pantalla de carga inicial */
+.splash{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 30%,rgba(245,197,66,.10),transparent 55%),linear-gradient(180deg,#040a14 0%,#07060a 100%);transition:opacity .5s ease,visibility .5s ease}
+.splash.hide{opacity:0;visibility:hidden;pointer-events:none}
+.splash-inner{display:flex;flex-direction:column;align-items:center;gap:.7rem;padding:2rem;text-align:center;animation:splashIn .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes splashIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.splash-logo{width:min(18rem,60vw);height:auto;filter:drop-shadow(0 12px 30px rgba(0,0,0,.6)) drop-shadow(0 0 24px rgba(245,197,66,.18))}
+.splash-brand{font:800 1.1rem var(--font-title);letter-spacing:.18em;color:var(--text)}
+.splash-sub{font-size:.95rem;color:var(--muted)}
+.splash-bar{width:min(16rem,70vw);height:.45rem;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;border:1px solid var(--edge);margin-top:.4rem}
+.splash-bar span{display:block;height:100%;width:40%;border-radius:999px;background:linear-gradient(90deg,transparent,var(--accent),transparent);animation:splashBar 1.2s ease-in-out infinite}
+@keyframes splashBar{0%{transform:translateX(-120%)}100%{transform:translateX(320%)}}
+
+/* Progreso de instalación */
+.install-progress{margin-top:1rem;padding:1rem;border-radius:10px;background:rgba(3,10,20,.45);border:1px solid var(--line);display:none}
+.install-progress.show{display:block}
+.install-progress-head{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.6rem}
+.install-progress-title{font:700 .85rem var(--font-body);color:var(--text)}
+.install-progress-pct{font:800 .9rem var(--font-title);color:var(--accent);min-width:3rem;text-align:right}
+.install-progress .bar{margin-top:0;display:block;visibility:visible;height:.85rem;border-radius:999px;position:relative;overflow:hidden}
+.install-progress .bar i{border-radius:999px;position:relative}
+.install-progress .bar i::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transform:translateX(-100%);animation:barShine 1.6s linear infinite}
+@keyframes barShine{to{transform:translateX(200%)}}
+.install-progress .status{text-align:left;margin-top:.55rem;min-height:1.3rem}

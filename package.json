@@ -1,0 +1,68 @@
+{
+  "name": "proyectados-mc-launcher",
+  "productName": "Proyectados MC",
+  "version": "1.0.0",
+  "description": "Launcher de Proyectados MC · KN STUDIOS",
+  "main": "src/main.js",
+  "author": "SR-KNOX <https://github.com/SR-KNOX>",
+  "contributors": [
+    "Dobe <https://github.com/vD0B3R0Tv>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/SR-KNOX/PMC_Launcher#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SR-KNOX/PMC_Launcher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SR-KNOX/PMC_Launcher/issues"
+  },
+  "keywords": [
+    "minecraft",
+    "launcher",
+    "electron",
+    "forge",
+    "modpack",
+    "proyectados",
+    "minecraft-launcher"
+  ],
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win nsis --publish never"
+  },
+  "dependencies": {
+    "extract-zip": "^2.0.1",
+    "minecraft-java-core": "^4.2.9"
+  },
+  "devDependencies": {
+    "electron": "45.3.1",
+    "electron-builder": "26.18.1"
+  },
+  "build": {
+    "appId": "com.proyectadosmc.launcher",
+    "productName": "Proyectados MC",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "extraResources": [
+      {
+        "from": "build/icon.ico",
+        "to": "icon.ico"
+      }
+    ],
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Proyectados MC",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico"
+    }
+  }
+}

@@ -1,228 +1,200 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7f1d1d,50:b91c1c,100:0f0f13&height=150&section=header" alt="" width="100%">
+<img src="docs/brand/hero.jpg" alt="Las Tierras Intermedias — PROYECTADOS" width="100%">
 
-<img src="docs/brand/title.png" alt="PMC Launcher" width="430">
+<img src="docs/brand/title.png" alt="PROYECTADOS" width="430">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3200&pause=900&color=EF4444&center=true&vCenter=true&width=640&height=48&lines=Descarga.;Elige+carpeta.;Escribe+tu+nick.;Juega." alt="Descarga. Elige carpeta. Escribe tu nick. Juega.">
+**El launcher oficial de Proyectados MC. Un .exe, un nick y a jugar.**
 
-<br>
-
-[![Descargar para Windows](https://img.shields.io/badge/DESCARGAR%20PARA%20WINDOWS-v2.0.0-b91c1c?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SR-KNOX/ProyectadosMC_Launcher/releases/latest) [![Unirse al Discord](https://img.shields.io/badge/UNIRSE%20AL%20DISCORD-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/kpbGykKhD2)
+[![Descargar para Windows](https://img.shields.io/badge/DESCARGAR%20PARA%20WINDOWS-v1.0.0-b91c1c?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SR-KNOX/ProyectadosMC_Launcher/releases/download/v1.0.0/Proyectados%20MC%20Setup%201.0.0.exe)
+[![Discord](https://img.shields.io/badge/UNIRSE%20AL%20DISCORD-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/kpbGykKhD2)
 
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?style=flat-square&logo=windows&logoColor=white)](https://github.com/SR-KNOX/ProyectadosMC_Launcher/releases)
-[![Minecraft](https://img.shields.io/badge/Minecraft-1.18.2-62b47a?style=flat-square&logo=minecraft&logoColor=white)](https://github.com/SR-KNOX/ProyectadosMC_Launcher)
-[![Forge](https://img.shields.io/badge/Forge-40.3.12-df5a2c?style=flat-square)](https://github.com/SR-KNOX/ProyectadosMC_Launcher)
-[![Electron](https://img.shields.io/badge/Electron-app%20de%20escritorio-47848F?style=flat-square&logo=electron&logoColor=white)](https://www.electronjs.org/)
-[![KN STUDIOS](https://img.shields.io/badge/KN%20STUDIOS-oficial-7f1d1d?style=flat-square)](https://github.com/SR-KNOX)
-
-<br>
-
-<img src="docs/screenshots/1.png" alt="PMC Launcher, menú principal" width="92%">
-
-<br><br>
-
-<img src="docs/brand/stats.svg" alt="200+ mods, Minecraft 1.18.2, Forge 40.3.12, 1 instalador, 0 cuentas de Mojang" width="100%">
+[![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-62b47a?style=flat-square&logo=minecraft&logoColor=white)](https://github.com/SR-KNOX/ProyectadosMC_Launcher/releases)
+[![Forge](https://img.shields.io/badge/Forge-1.20.1--47.4.28-df5a2c?style=flat-square)](https://github.com/SR-KNOX/ProyectadosMC_Launcher/releases)
+[![Java](https://img.shields.io/badge/Java-17-f60?style=flat-square&logo=openjdk&logoColor=white)](https://adoptium.net/temurin/releases/)
+[![Electron](https://img.shields.io/badge/Electron-45-47848F?style=flat-square&logo=electron&logoColor=white)](https://www.electronjs.org/)
+[![KN STUDIOS](https://img.shields.io/badge/KN%20STUDIOS-oficial-7f1d1d?style=flat-square&logo=star&logoColor=white)](https://github.com/SR-KNOX)
 
 </div>
 
 ---
 
-## Qué es
-
-**PMC Launcher (PMCL)** es el launcher oficial de **Proyectados MC**, el servidor de KN STUDIOS. Descargas un .exe, escribes tu nick y el launcher se encarga de todo lo demás: instala Forge, prepara la instancia, baja los mods y abre el juego.
-
->[!IMPORTANT]
-> Proyectados MC es un servidor **híbrido**: cualquiera puede entrar a nuestro Discord y asomarse a la comunidad, pero el modpack y este launcher se desarrollaron únicamente para jugar aquí. No es un launcher genérico, no sirve para otros modpacks ni otros servidores, y no pretendemos que lo haga.
-
-<img src="docs/brand/flujo.svg" alt="Descargas el .exe, eliges carpeta y nick, se instalan Forge y los mods, pulsas Jugar" width="100%">
-
----
-
-## Por qué existe
-
-Todo empezó con un grupo de amigos, un modpack de más de 200 mods y un problema que se repetía cada fin de semana: alguien quería jugar y arrancaba la misma odisea de capturas, carpetas equivocadas, mods faltantes y el clásico «a mí no me abre».
-
-Durante meses fui el que se conectaba de madrugada a rescatar instalaciones ajenas, hasta que una noche juré que nadie de la comunidad volvería a pasar por eso. Así nació PMCL.
-
----
-
-## Qué hace
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-**Instalación automática**
-Forge, mods y dependencias se preparan solos. Tú eliges la carpeta y el launcher hace el resto.
-
-</td>
-<td width="50%" valign="top">
-
-**Actualizaciones automáticas**
-El modpack se mantiene al día desde fuentes que nosotros verificamos.
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-**Menos carga**
-Optimizaciones que reducen hasta un 20 % la carga de los mods.
-
-</td>
-<td width="50%" valign="top">
-
-**RAM a tu medida**
-Ajusta la memoria desde 2 GB hasta el 75 % de tu equipo.
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-**Tu skin, tu identidad**
-Súbela una vez y se verá en el launcher y dentro del servidor.
-
-</td>
-<td width="50%" valign="top">
-
-**Cuenta offline**
-Sin Mojang, sin registros. Solo tu nick.
-
-</td>
-</tr>
-</table>
-
-**Y los detalles que se agradecen**
-
-- El juego se abre de forma independiente: puedes cerrar el launcher y Minecraft sigue corriendo.
-- El volumen del launcher se sincroniza con el del juego.
-- Al actualizar, tus teclas y ajustes se conservan.
-- Si borras la carpeta de la instancia, el launcher te lleva de vuelta a la instalación sin romperse.
-
----
-
-## Stack
-
-<img src="docs/brand/stack.svg" alt="JavaScript 81%, CSS 13%, HTML 5%, JSON 1%" width="100%">
-
-El launcher corre sobre **Electron**, con **Minecraft 1.18.2 + Forge 40.3.12**. Esta es la composición real del proyecto.
-
----
-
-## Capturas
-
 <div align="center">
 
-<img src="docs/brand/hero.jpg" alt="Proyectados MC" width="100%">
-
-<br>
-
-<img src="docs/screenshots/2.png" alt="PMC Launcher" width="48%">
-<img src="docs/screenshots/3.png" alt="PMC Launcher" width="48%">
-<br>
-<img src="docs/screenshots/5.png" alt="PMC Launcher" width="72%">
+# · EL MUNDO TE ESPERA ·
 
 </div>
 
----
+> *Mientras la luna sangrienta cruje bajo las torres en ruinas, **Morthaël, el Segador del Fin**, despierta de su largo letargo.*
+>
+> *La deidad superior **Aetherion** ha reunido a tus amigos y a ti: un puñado de almas de otros mundos, convocados a las **Tierras Intermedias** con una sola consigna. Sobrevivir, explorar, recuperar. No hay poder en estas capas que no tenga un precio, y nadie en este mundo recuerda cómo fue el primer día.*
 
-## Instalación
-
-1. Entra a [Releases](https://github.com/SR-KNOX/ProyectadosMC_Launcher/releases/latest) y descarga el instalador.
-2. Ejecútalo con doble clic.
-3. Elige la carpeta donde vivirá tu instancia.
-4. Escribe tu nick.
-5. Pulsa **Jugar**. El launcher se encarga del resto.
-
-**Requisitos:** Windows 10 u 11, Java 17 o superior (se detecta automáticamente y, si falta, se descarga antes de instalar Forge) e internet la primera vez.
+Esto es **Proyectados MC**: nuestro servidor híbrido, nuestro modpack — una aventura completa para jugar con amigos, sin cuenta, sin registro, sin que nadie te tome de la mano.
 
 ---
 
-## Preguntas frecuentes
-
-<details>
-<summary><b>¿Necesito una cuenta de Minecraft o de Mojang?</b></summary>
-<br>
-No. PMCL funciona con cuenta offline: solo escribes tu nick.
-</details>
-
-<details>
-<summary><b>¿Puedo usarlo para otro servidor o para otros mods?</b></summary>
-<br>
-No. PMCL está hecho únicamente para el modpack y el servidor de Proyectados MC.
-</details>
-
-<details>
-<summary><b>¿Qué pasa si no tengo Java?</b></summary>
-<br>
-El launcher lo detecta y, si falta, descarga el runtime necesario antes de instalar Forge.
-</details>
-
-<details>
-<summary><b>¿Pierdo mis teclas y ajustes al actualizar el modpack?</b></summary>
-<br>
-No. Las actualizaciones conservan tus teclas y tus ajustes.
-</details>
-
-<details>
-<summary><b>¿Puedo cerrar el launcher mientras juego?</b></summary>
-<br>
-Sí. Minecraft se abre de forma independiente y sigue corriendo.
-</details>
-
-<details>
-<summary><b>Algo no funciona, ¿a quién le escribo?</b></summary>
-<br>
-Entra al Discord o escribe directo a <b>knox.sr</b>. Ahí te ayudamos.
-</details>
-
----
-
-## Comunidad
-
-<table>
-<tr>
-<td width="50%" align="center" valign="top">
-
-<a href="https://discord.gg/kpbGykKhD2"><img src="docs/brand/discord-server.svg" alt="Comunidad de Proyectados MC en Discord" width="100%"></a>
-
-</td>
-<td width="50%" align="center" valign="top">
-
-<a href="https://discord.com/users/934329981646028810"><img src="docs/brand/discord-contact.svg" alt="Contacto directo con knox.sr" width="100%"></a>
-
-</td>
-</tr>
-</table>
-
-> **Aquí no se juega solo.** Entra al servidor, preséntate y pregunta lo que sea. Siempre hay alguien armando partida.
-
-<details>
-<summary><b>Primeros pasos en el servidor</b></summary>
-<br>
-
-1. Entra con la tarjeta del servidor o con `discord.gg/kpbGykKhD2`.
-2. Lee las reglas y preséntate en el canal de bienvenida.
-3. Descarga el launcher, escribe tu nick y pulsa **Jugar**.
-4. ¿Un bug o una idea? Escríbeme directo a **knox.sr**.
-
-</details>
-
----
-
-## Créditos
-
-Desarrollado por [**Knox**](https://github.com/SR-KNOX) y con ayuda de [**Dobe**](https://github.com/vD0B3R0Tv).
-Un proyecto de **KN STUDIOS**.
-
-<sub>Hecho con [minecraft-java-core](https://www.npmjs.com/package/minecraft-java-core), [Electron](https://www.electronjs.org/), [Monocraft](https://github.com/IdreesInc/Monocraft) y [Nunito](https://fonts.google.com/specimen/Nunito).</sub>
-
-<sub>Proyecto independiente, no afiliado a Mojang ni a Microsoft. Minecraft es propiedad de Mojang AB. Distribuido bajo licencia MIT, ver [LICENSE](LICENSE).</sub>
+## 🎮 Descarga y arranca
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0f13,50:b91c1c,100:7f1d1d&height=130&section=footer&text=KN%20STUDIOS%20%C2%B7%20Proyectados%20MC&fontSize=20&fontColor=ffffff&fontAlignY=68" alt="" width="100%">
+[![Descargar Proyectados MC Setup 1.0.0.exe](https://img.shields.io/badge/⬇️%20DESCARGAR%20LAUNCHER-v1.0.0-b91c1c?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SR-KNOX/ProyectadosMC_Launcher/releases/download/v1.0.0/Proyectados%20MC%20Setup%201.0.0.exe)
+
+</div>
+
+**Cómo arranca la partida:**
+1. Descarga **`Proyectados MC Setup 1.0.0.exe`**.
+2. Ejecútalo con doble clic e instala (Windows avisará — es normal en apps sin firma de pago).
+3. Escribe tu nick de jugador.
+4. Pulsa **Jugar**. El launcher instala Forge, prepara la instancia, descarga los mods y abre el mundo.
+
+**Lo que necesita tu equipo:**
+- Windows 10 o 11
+- 4 GB de RAM libres (recomendado 4–6 GB)
+- Java 17 (si no la tienes, el launcher la descarga e instala por ti)
+- Internet la primera vez
+- Tu nick — **sin cuenta de Microsoft, sin email, sin contraseña**
+
+---
+
+## ✨ Qué hace el launcher
+
+| | |
+|:---:|---|
+| ⚙️ | **Todo automático** — Forge, mods, instancia, Java. Tú solo abres el mundo. |
+| 🔄 | **Modpack siempre al día** — actualización directa desde GitHub, según manifiesto verificado. |
+| 💬 | **Logs integrados** — ves cada cambio sin salir del juego. |
+| ⚡ | **Rendimiento de verdad** — perfiles bajo/medio/alto, RAM ajustable, optimizaciones del cliente. |
+| 🎨 | **Tu skin y tu capa** — en tu perfil, dentro del juego, en cualquier mundo. |
+| 📢 | **Multijugador híbrido** — servidor público con temporadas grandes. |
+
+---
+
+## 📸 Así se ve por dentro
+
+<p align="center"><img src="docs/screenshots/ui-home.jpg" alt="Pantalla de inicio del launcher" width="70%"></p>
+<p align="center"><img src="docs/screenshots/ui-logs.jpg" alt="Historial de cambios con icono por tipo y colores por gravedad" width="70%"></p>
+<p align="center"><img src="docs/screenshots/ui-options.jpg" alt="Opciones del launcher: skin, capa, RAM, rendimiento" width="70%"></p>
+<p align="center"><img src="docs/screenshots/ui-about.jpg" alt="Sobre nosotros – la historia detrás de Proyectados MC" width="70%"></p>
+
+---
+
+## ⚔️ Miembros del reparto
+
+Nuestro modpack reúne **más de 170 mods** — criaturas, magia, tecnología, estructuras, dioses antiguos y ruinas que no deberían despertarse. Algunas de las estrellas de la temporada:
+
+<table>
+<tr>
+<td align="center"><img src="docs/mods/botania.png" width="96" alt="Botania"><br><b>Botania</b></td>
+<td align="center"><img src="docs/mods/create.png" width="96" alt="Create"><br><b>Create</b></td>
+<td align="center"><img src="docs/mods/immersiveengineering.png" width="96" alt="Immersive Engineering"><br><b>Immersive Engineering</b></td>
+<td align="center"><img src="docs/mods/deeperdarker.png" width="96" alt="Deeper and Darker"><br><b>Deeper and Darker</b></td>
+<td align="center"><img src="docs/mods/mowziesmobs.png" width="96" alt="Mowzie's Mobs"><br><b>Mowzie's Mobs</b></td>
+<td align="center"><img src="docs/mods/witherstormmod.png" width="96" alt="Wither Storm"><br><b>Wither Storm</b></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/mods/dungeons_arise.png" width="96" alt="Dungeons Arise"><br><b>Dungeons Arise</b></td>
+<td align="center"><img src="docs/mods/medieval_nether.png" width="96" alt="Medieval Nether"><br><b>Medieval Nether</b></td>
+<td align="center"><img src="docs/mods/biomeswevegone.png" width="96" alt="Biomes We've Gone"><br><b>Biomes We've Gone</b></td>
+<td align="center"><img src="docs/mods/another_furniture.png" width="96" alt="Another Furniture"><br><b>Another Furniture</b></td>
+<td align="center"><img src="docs/mods/moogs_structures.png" width="96" alt="Moog's Voyager Structures"><br><b>Moog's Structures</b></td>
+<td align="center"><img src="docs/mods/mekanism.png" width="96" alt="Mekanism"><br><b>Mekanism</b></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/mods/refinedstorage.png" width="96" alt="Refined Storage"><br><b>Refined Storage</b></td>
+<td align="center"><img src="docs/mods/farmersdelight.png" width="96" alt="Farmer's Delight"><br><b>Farmer's Delight</b></td>
+<td align="center"><img src="docs/mods/another_furniture.png" width="96" alt="Another Furniture"><br><b>Furniture</b></td>
+<td align="center"><img src="docs/mods/threateningly_mobs.png" width="96" alt="Threateningly Mobs"><br><b>Threateningly Mobs</b></td>
+<td align="center"><img src="docs/mods/stalwart_dungeons.png" width="96" alt="Stalwart Dungeons"><br><b>Stalwart Dungeons</b></td>
+<td align="center"><img src="docs/mods/goblintraders.png" width="96" alt="Goblin Traders"><br><b>Goblin Traders</b></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/mods/supplementaries.png" width="96" alt="Supplementaries"><br><b>Supplementaries</b></td>
+<td align="center"><img src="docs/mods/eeeabsmobs.png" width="96" alt="EEE Abs Mobs"><br><b>EEE Abs Mobs</b></td>
+<td align="center"><img src="docs/mods/graveyard.png" width="96" alt="Graveyard"><br><b>Graveyard</b></td>
+<td align="center"><img src="docs/mods/enhanced_boss_bars.png" width="96" alt="Enhanced Boss Bars"><br><b>Boss Bars</b></td>
+<td align="center"><img src="docs/mods/waystones.png" width="96" alt="Waystones"><br><b>Waystones</b></td>
+<td align="center"><img src="docs/mods/yungsextras.png" width="96" alt="Yung's Extras"><br><b>+ 170 más</b></td>
+</tr>
+</table>
+
+> *La lista completa del modpack vive en el servidor; esta es solo una selección.*
+
+---
+
+## ✅ Lo que puedes y no puedes
+
+| Puedes | No puedes |
+|:---|:---|
+| Entrar con tu nick y jugar en el servidor híbrido | Usar cabeceras sobre el cliente para hacer trampas |
+| Sumar mods adicionales si el servidor lo permite | Abusar de clients mods para ventaja injusta |
+| Construir, comerciar, explorar las Tierras Intermedias | Salirte con problemas de rendimiento — hay alternativas |
+
+---
+
+## 🤝 Comunidad indiscutible
+
+<p align="center"><img src="docs/brand/discord-server.svg" alt="Únete al Discord de Proyectados MC" width="70%"></p>
+
+> **Aquí no se juega solo.** Entra al Discord, preséntate y pregúntale a alguien — siempre hay alguien armando una partida.
+
+### 👋 Primeros pasos
+
+1. Entra por [Discord](https://discord.gg/kpbGykKhD2) o descarga el launcher.
+2. Lee las reglas y preséntate en **#bienvenida**.
+3. Instala, escribe tu nick, **¡a jugar!**
+4. ¿Bug o idea? Escríbele directo a **knox.sr**.
+
+---
+
+## ❓ Preguntas frecuentes
+
+<details><summary><b>¿Puedo jugar sin cuenta de Microsoft?</b></summary>
+Sí. Proyectados MC y su modpack funcionan en modo offline — sin Microsoft, sin Mojang.
+</details>
+
+<details><summary><b>¿Funciona en Mac o Linux?</b></summary>
+Actualmente solo Windows 10/11. El build de Mac y Linux está en el horizonte.
+</details>
+
+<details><summary><b>¿Tengo que comprar el juego?</b></summary>
+Si no tienes tu propia copia de Minecraft, Proyectados MC es la solución perfecta.
+</details>
+
+<details><summary><b>¿Puedo usar mis propios mods?</b></summary>
+Manten los mods del pack — son los que valida el servidor. Si quieres añadir algo, pregúntale a knox.sr.
+</details>
+
+<details><summary><b>¿Qué pasa con Windows Defender?</b></summary>
+El launcher no tiene firma digital (no es malware, solo software pequeño). Si Aviso sale, elige "Más información → Ejecutar igualmente". Si sigues dudando, avísale a knox.sr.
+</details>
+
+<details><summary><b>¿Dónde se guarda mi partida?</b></summary>
+En la carpeta del launcher, por defecto: <code>%APPDATA%\\Proyectados MC</code>. Tu nick y configuración se quedan en tu equipo.
+</details>
+
+---
+
+## ⚠️ Legal
+
+> Proyecto **no oficial**. Minecraft es una marca registrada de Mojang Studios. Proyectados MC es un proyecto de fans por **KN STUDIOS**, en desarrollo activo y distribuido bajo **licencia MIT**. No redistribuye Minecraft, no representa a Mojang ni a Microsoft.
+
+Distribuido bajo licencia [MIT](LICENSE). Ver [LICENSE](LICENSE).
+
+---
+
+<p align="center"><img src="docs/brand/flujo.svg" alt="Hecho con cariño" width="100%"></p>
+
+<div align="center">
+
+*Hecho por [<b>Knox</b>](https://github.com/SR-KNOX) con el apoyo del equipo de <b>KN STUDIOS</b>. <b>★</b> si te pasó volando la luna sangrienta.*
+
+<sub>Proyecto independiente, no afiliado a Mojang ni a Microsoft. Minecraft © Mojang Studios.</sub>
+
+</div>
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0b0a18,50:b91c1c,100:7f1d1d&height=120&section=footer&text=KN%20STUDIOS%20%C2%B7%20PROYECTADOS%20MC&fontSize=18&fontColor=ffffff&fontAlignY=68" alt="KN STUDIOS — PROYECTADOS MC" width="100%">
 
 </div>
