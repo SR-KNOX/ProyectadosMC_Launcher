@@ -6,7 +6,7 @@
 
 **El launcher oficial de Proyectados MC. Un .exe, un nick y a jugar.**
 
-[![Descargar para Windows](https://img.shields.io/badge/DESCARGAR%20PARA%20WINDOWS-v1.0.0-b91c1c?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SR-KNOX/ProyectadosMC_Launcher/releases/download/v1.0.0/Proyectados%20MC%20Setup%201.0.0.exe)
+[![Descargar para Windows](https://img.shields.io/badge/DESCARGAR%20PARA%20WINDOWS-v1.0.0-b91c1c?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SR-KNOX/ProyectadosMC_Launcher/releases/download/v1.0.0/Proyectados.MC.Setup.1.0.0.exe)
 [![Discord](https://img.shields.io/badge/UNIRSE%20AL%20DISCORD-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/kpbGykKhD2)
 
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?style=flat-square&logo=windows&logoColor=white)](https://github.com/SR-KNOX/ProyectadosMC_Launcher/releases)
@@ -38,7 +38,7 @@ Esto es **Proyectados MC**: nuestro servidor híbrido, nuestro modpack — una a
 
 <div align="center">
 
-[![Descargar Proyectados MC Setup 1.0.0.exe](https://img.shields.io/badge/⬇️%20DESCARGAR%20LAUNCHER-v1.0.0-b91c1c?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SR-KNOX/ProyectadosMC_Launcher/releases/download/v1.0.0/Proyectados%20MC%20Setup%201.0.0.exe)
+[![Descargar Proyectados MC Setup 1.0.0.exe](https://img.shields.io/badge/⬇️%20DESCARGAR%20LAUNCHER-v1.0.0-b91c1c?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SR-KNOX/ProyectadosMC_Launcher/releases/download/v1.0.0/Proyectados.MC.Setup.1.0.0.exe)
 
 </div>
 
